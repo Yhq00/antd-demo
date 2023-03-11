@@ -25,8 +25,8 @@ import './App.css';
 
 const App = () =>(
  <div className='App'>
-    <Button type='primary'>11 </Button>
-  </div>   
+    <Button type='primary'></Button>
+  </div>
 )
 
 export default App;
