@@ -25,7 +25,7 @@ import './App.css';
 
 const App = () =>(
  <div className='App'>
-    <Button type='primary'></Button>
+    <Button type='primary'></Button>  
   </div>
 )
 
