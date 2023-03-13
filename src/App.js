@@ -8,7 +8,7 @@ import { Collapse } from 'antd';
 
 //折叠面板定义
 const { Panel } = Collapse;
-const text = `
+const text = `我是分支一的修改
   A dog is a type of domesticated animal.
   Known for its loyalty and faithfulness,
   it can be found as a welcome guest in many households across the world.
