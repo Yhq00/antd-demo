@@ -81,8 +81,8 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-            <MyFirstComponent propsName={"我是组件一来自props的值"}></MyFirstComponent>
-            <MyTwoComponent propsName={"我是来自组件二的props的值"}></MyTwoComponent>
+            <MyFirstComponent propsName={"我是组件1来自props的值"}></MyFirstComponent>
+            <MyTwoComponent propsName={"我是来自组件2的props的值"}></MyTwoComponent>
           </Content>
         </Layout>
       </Layout>
