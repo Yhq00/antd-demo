@@ -86,36 +86,6 @@ const App = () => {
               <MyFirstComponent propsName="我是组件一来自props的值" />
             )}
           />
-<<<<<<< HEAD
-        </Sider>
-        <Layout
-          style={{
-            padding: '0 24px 24px',
-          }}
-        >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-              background: colorBgContainer,
-            }}
-          >
-            <MyFirstComponent propsName={"我是组件1来自props的值"}></MyFirstComponent>
-            <MyTwoComponent propsName={"我是来自组件2的props的值"}></MyTwoComponent>
-          </Content>
-        </Layout>
-      </Layout>
-=======
           <Route
             path="/class2-2"
             Component={() => (
@@ -125,7 +95,6 @@ const App = () => {
           <Route path="/login" Component={LoginComponent}></Route>
         </Routes>
       </Content>
->>>>>>> c1c84fa4da04a34204165a07a9ecc228c3dbb345
     </Layout>
   );
 };
