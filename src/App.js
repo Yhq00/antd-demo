@@ -13,6 +13,7 @@ import { Routes, Link, Route } from "react-router-dom";
 import Class1 from "./pages/calss1";
 import LoginComponent from "./pages/class3/login";
 import InfoComponent from "./pages/class3/Information";
+import CalendarComponent from "./pages/class3/Calendar ";
 //layout布局定义
 const { Header, Content } = Layout;
 //菜单路由设置
@@ -41,6 +42,11 @@ const menu1 = [
     key: "/info  ",
     icon: <UserOutlined />,
     label: "info",
+  },
+  {
+    key: "/calendar",
+    icon: <UserOutlined />,
+    label: "calendar",
   },
 ];
 const App = () => {
@@ -95,6 +101,7 @@ const App = () => {
           />
           <Route path="/login" Component={LoginComponent}></Route>
           <Route path="/info" Component={InfoComponent}></Route>
+          <Route path="/Calendar" Component={CalendarComponent}></Route>
         </Routes>
       </Content>
     </Layout>
