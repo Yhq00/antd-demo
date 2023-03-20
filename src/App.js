@@ -71,7 +71,12 @@ const App = () => {
     <Layout>
       <Header className="header">
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal">
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["calss1"]}
+          defaultOpenKeys={["class1"]}
+        >
           <MapMenuList />
         </Menu>
       </Header>
