@@ -1,92 +1,101 @@
-import 'antd/dist/reset.css'
-import './App.css';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import React from 'react';
-import MyFirstComponent from './components/MyFirstComponent';
-import MyTwoComponent from './components/MyTwoComponent';
-
+import "antd/dist/reset.css";
+import "./App.css";
+import { Layout, Menu, theme } from "antd";
+import {
+  LaptopOutlined,
+  NotificationOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import React from "react";
+import MyFirstComponent from "./components/MyFirstComponent";
+import MyTwoComponent from "./components/MyTwoComponent";
+import { Routes, Link, Route } from "react-router-dom";
+import Class1 from "./pages/calss1";
+import LoginComponent from "./pages/class3/login";
 //layout布局定义
-const { Header, Content, Sider } = Layout;
-const items1 = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
-
+const { Header, Content } = Layout;
+//菜单路由设置
+const menu1 = [
+  {
+    key: "/class1",
+    icon: <LaptopOutlined />,
+    label: "laptop",
+  },
+  {
+    key: "/class2",
+    icon: <NotificationOutlined />,
+    label: "notification",
+  },
+  {
+    key: "/class2-2",
+    icon: <UserOutlined />,
+    label: "user",
+  },
+  {
+    key: "/login  ",
+    icon: <UserOutlined />,
+    label: "login",
+  },
+];
 const App = () => {
-//layout布局定义
+  //layout布局定义
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const MapMenuList = () => {
+    const menulist = menu1.map(({ key, icon, label }) => {
+      return (
+        <Menu.Item key={key}>
+          <Link to={key}>{icon}</Link>
+          <span>{label}</span>
+        </Menu.Item>
+      );
+    });
+    return menulist;
+  };
 
   return (
     <Layout>
       <Header className="header">
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          // defaultSelectedKeys={['/class1']}
+          // defaultOpenKeys={['/class1']}
+        >
+          <MapMenuList />
+        </Menu>
       </Header>
-      <Layout>
-        <Sider
-          width={200}
-          style={{
-            background: colorBgContainer,
-          }}
-        >
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{
-              height: '100%',
-              borderRight: 0,
-            }}
-            items={items2}
+      <Content
+        style={{
+          padding: 24,
+          margin: 0,
+          minHeight: 280,
+          background: colorBgContainer,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Routes>
+          <Route path="/class1" Component={Class1}></Route>
+          <Route
+            path="/class2"
+            Component={() => (
+              <MyFirstComponent propsName="我是组件一来自props的值" />
+            )}
           />
-        </Sider>
-        <Layout
-          style={{
-            padding: '0 24px 24px',
-          }}
-        >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-              background: colorBgContainer,
-            }}
-          >
-            <MyFirstComponent propsName={"我是组件一来自props的值"}></MyFirstComponent>
-            <MyTwoComponent propsName={"我是来自组件二的props的值"}></MyTwoComponent>
-          </Content>
-        </Layout>
-      </Layout>
+          <Route
+            path="/class2-2"
+            Component={() => (
+              <MyTwoComponent propsName="我是来自组件二的props的值" />
+            )}
+          />
+          <Route path="/login" Component={LoginComponent}></Route>
+        </Routes>
+      </Content>
     </Layout>
   );
-};  
+};
 export default App;
