@@ -9,7 +9,7 @@ import {
 import React from "react";
 import MyFirstComponent from "./components/MyFirstComponent";
 import MyTwoComponent from "./components/MyTwoComponent";
-import { Routes, Link, Route } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import Class1 from "./pages/calss1";
 import LoginComponent from "./pages/class3/login";
 import InfoComponent from "./pages/class3/Information";
@@ -17,56 +17,32 @@ import CalendarComponent from "./pages/class3/Calendar ";
 //layout布局定义
 const { Header, Content } = Layout;
 //菜单路由设置
-const menu1 = [
-  {
-    key: "/class1",
-    icon: <LaptopOutlined />,
-    label: "laptop",
-  },
-  {
-    key: "/class2",
-    icon: <NotificationOutlined />,
-    label: "notification",
-  },
-  {
-    key: "/class2-2",
-    icon: <UserOutlined />,
-    label: "user",
-  },
-  {
-    key: "/login  ",
-    icon: <UserOutlined />,
-    label: "login",
-  },
-  {
-    key: "/info  ",
-    icon: <UserOutlined />,
-    label: "info",
-  },
-  {
-    key: "/calendar",
-    icon: <UserOutlined />,
-    label: "calendar",
-  },
+
+function getItem(key, icon, label) {
+  return {
+    key,
+    icon,
+    label,
+  };
+}
+const items = [
+  getItem("/", <LaptopOutlined />, "laptop"),
+  getItem("/class1", <NotificationOutlined />, "notification"),
+  getItem("/class2", <UserOutlined />, "user"),
+  getItem("/login", <UserOutlined />, "login"),
+  getItem("/info", <UserOutlined />, "info"),
+  getItem("/calendar", <UserOutlined />, "calendar"),
 ];
 const App = () => {
   //layout布局定义
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
-  const MapMenuList = () => {
-    const menulist = menu1.map(({ key, icon, label }) => {
-      return (
-        <Menu.Item key={key}>
-          <Link to={key}>{icon}</Link>
-          <span>{label}</span>
-        </Menu.Item>
-      );
-    });
-    return menulist;
+  const navigate = useNavigate();
+  const onClick = (e) => {
+    console.log("click ", e);
+    navigate(e.key);
   };
-
   return (
     <Layout>
       <Header className="header">
@@ -74,11 +50,9 @@ const App = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["calss1"]}
-          defaultOpenKeys={["class1"]}
-        >
-          <MapMenuList />
-        </Menu>
+          onClick={onClick}
+          items={items}
+        ></Menu>
       </Header>
       <Content
         style={{
@@ -91,15 +65,15 @@ const App = () => {
         }}
       >
         <Routes>
-          <Route path="/class1" Component={Class1}></Route>
+          <Route path="/" Component={Class1}></Route>
           <Route
-            path="/class2"
+            path="/class1"
             Component={() => (
               <MyFirstComponent propsName="我是组件一来自props的值" />
             )}
           />
           <Route
-            path="/class2-2"
+            path="/class2"
             Component={() => (
               <MyTwoComponent propsName="我是来自组件二的props的值" />
             )}

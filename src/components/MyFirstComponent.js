@@ -1,66 +1,66 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class MyFirstComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: 'My First Component',
-      };
+      name: "My First Component",
+    };
   }
 
   state = {
-    name: 'My First Component',
+    name: "My First Component",
   };
 
   /**
    * react生命周期 挂载前
    */
   componentWillMount() {
-    console.log('Component will mount');
+    console.log("Component will mount");
   }
   /**
    * react生命周期 挂载后
    */
   componentDidMount() {
-    console.log('Component did mount');
+    console.log("Component did mount");
   }
 
   /**
    * react生命周期 更新前
    */
   componentWillUpdate() {
-    console.log('Component will update');
+    console.log("Component will update");
   }
 
   /**
    * react生命周期 更新后
    */
   componentDidUpdate() {
-    console.log('Component did update');
+    console.log("Component did update");
   }
 
   /**
    * react生命周期 卸载前
    */
   componentWillUnmount() {
-    console.log('Component will unmount');
+    console.log("Component will unmount");
   }
 
   /**
    * react生命周期 卸载后 不存在
    */
-  componentDidUnmount() {
-    console.log('Component did unmount');
-  }
+  // componentDidUnmount() {
+  //   console.log('Component did unmount');
+  // }
 
   render() {
-    console.log('render');
+    console.log("render");
     return (
       <div>
         <button
           onClick={() => {
             this.setState({
-              name: 'My First Component Update',
+              name: "My First Component Update",
             });
           }}
         >

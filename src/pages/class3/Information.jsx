@@ -15,9 +15,9 @@ const input = [
   { label: "邮箱" },
 ];
 const MapinputList = () => {
-  const inputList = input.map((item) => {
+  const inputList = input.map((item, index) => {
     return (
-      <Form.Item label={item.label}>
+      <Form.Item label={item.label} key={index}>
         <Input placeholder={item.label} style={inputStyle} disabled={true} />
       </Form.Item>
     );
