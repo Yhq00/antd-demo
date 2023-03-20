@@ -12,6 +12,7 @@ import MyTwoComponent from "./components/MyTwoComponent";
 import { Routes, Link, Route } from "react-router-dom";
 import Class1 from "./pages/calss1";
 import LoginComponent from "./pages/class3/login";
+import InfoComponent from "./pages/class3/Information";
 //layout布局定义
 const { Header, Content } = Layout;
 //菜单路由设置
@@ -36,6 +37,11 @@ const menu1 = [
     icon: <UserOutlined />,
     label: "login",
   },
+  {
+    key: "/info  ",
+    icon: <UserOutlined />,
+    label: "info",
+  },
 ];
 const App = () => {
   //layout布局定义
@@ -59,12 +65,7 @@ const App = () => {
     <Layout>
       <Header className="header">
         <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          // defaultSelectedKeys={['/class1']}
-          // defaultOpenKeys={['/class1']}
-        >
+        <Menu theme="dark" mode="horizontal">
           <MapMenuList />
         </Menu>
       </Header>
@@ -93,6 +94,7 @@ const App = () => {
             )}
           />
           <Route path="/login" Component={LoginComponent}></Route>
+          <Route path="/info" Component={InfoComponent}></Route>
         </Routes>
       </Content>
     </Layout>
