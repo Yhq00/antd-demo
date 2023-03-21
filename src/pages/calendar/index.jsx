@@ -68,7 +68,7 @@ const getMonthData = (value) => {
     return 1394;
   }
 };
-const CalendarComponent = () => {
+const calendarComponent = () => {
   const monthCellRender = (value) => {
     const num = getMonthData(value);
     return num ? (
@@ -97,4 +97,4 @@ const CalendarComponent = () => {
     />
   );
 };
-export default CalendarComponent;
+export default calendarComponent;
