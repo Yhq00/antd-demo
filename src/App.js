@@ -15,24 +15,29 @@ import LoginComponent from "./pages/login/login";
 import InfoComponent from "./pages/information/information";
 import CalendarComponent from "./pages/calendar";
 //layout布局定义
-const { Header, Content } = Layout;
+const { Header, Content, Sider } = Layout;
 //菜单路由设置
 
-function getItem(key, icon, label) {
+function getItem(key, icon, label, children, tyle) {
   return {
     key,
     icon,
     label,
+    children,
+    tyle,
   };
 }
-const items = [
-  getItem("/", <LaptopOutlined />, "laptop"),
-  getItem("/class1", <NotificationOutlined />, "notification"),
-  getItem("/class2", <UserOutlined />, "user"),
-  getItem("/login", <UserOutlined />, "login"),
-  getItem("/info", <UserOutlined />, "info"),
+const items = [getItem("/", <LaptopOutlined />, "课程")];
+
+const items2 = [
+  getItem("/", <LaptopOutlined />, "第一节课"),
+  getItem("/class2", <NotificationOutlined />, "第二节课"),
+  getItem("/class3", <UserOutlined />, "第二节课"),
+  getItem("/login", <UserOutlined />, "第三节课"),
+  getItem("/info", <UserOutlined />, "第三节课"),
   getItem("/calendar", <UserOutlined />, "calendar"),
 ];
+
 const App = () => {
   //layout布局定义
   const {
@@ -64,24 +69,55 @@ const App = () => {
           flexDirection: "column",
         }}
       >
-        <Routes>
-          <Route path="/" Component={Class1}></Route>
-          <Route
-            path="/class1"
-            Component={() => (
-              <MyFirstComponent propsName="我是组件一来自props的值" />
-            )}
-          />
-          <Route
-            path="/class2"
-            Component={() => (
-              <MyTwoComponent propsName="我是来自组件二的props的值" />
-            )}
-          />
-          <Route path="/login" Component={LoginComponent}></Route>
-          <Route path="/info" Component={InfoComponent}></Route>
-          <Route path="/Calendar" Component={CalendarComponent}></Route>
-        </Routes>
+        <Layout
+          style={{
+            padding: "24px 0",
+            background: colorBgContainer,
+          }}
+        >
+          <Sider
+            style={{
+              background: colorBgContainer,
+            }}
+            width={200}
+          >
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={["1"]}
+              defaultOpenKeys={["sub1"]}
+              style={{
+                height: "100%",
+              }}
+              onClick={onClick}
+              items={items2}
+            />
+          </Sider>
+          <Content
+            style={{
+              padding: "0 24px",
+              minHeight: 280,
+            }}
+          >
+            <Routes>
+              <Route path="/" Component={Class1}></Route>
+              <Route
+                path="/class2"
+                Component={() => (
+                  <MyFirstComponent propsName="我是组件一来自props的值" />
+                )}
+              />
+              <Route
+                path="/class3"
+                Component={() => (
+                  <MyTwoComponent propsName="我是来自组件二的props的值" />
+                )}
+              />
+              <Route path="/login" Component={LoginComponent}></Route>
+              <Route path="/info" Component={InfoComponent}></Route>
+              <Route path="/Calendar" Component={CalendarComponent}></Route>
+            </Routes>
+          </Content>
+        </Layout>
       </Content>
     </Layout>
   );
