@@ -14,6 +14,8 @@ import Class1 from "./pages/calss1";
 import LoginComponent from "./pages/login/login";
 import InfoComponent from "./pages/information/information";
 import CalendarComponent from "./pages/calendar";
+import Test042 from "./pages/class4/test042";
+import Tree from "./pages/treecomment/index";
 //layout布局定义
 const { Header, Content, Sider } = Layout;
 //菜单路由设置
@@ -36,6 +38,8 @@ const items2 = [
   getItem("/login", <UserOutlined />, "第三节课"),
   getItem("/info", <UserOutlined />, "第三节课"),
   getItem("/calendar", <UserOutlined />, "calendar"),
+  getItem("/class4", <UserOutlined />, "第四节课"),
+  getItem("/class5", <UserOutlined />, "树形组件"),
 ];
 
 const App = () => {
@@ -45,7 +49,7 @@ const App = () => {
   } = theme.useToken();
   const navigate = useNavigate();
   const onClick = (e) => {
-    console.log("click ", e);
+    // console.log("click ", e);
     navigate(e.key);
   };
   return (
@@ -115,6 +119,8 @@ const App = () => {
               <Route path="/login" Component={LoginComponent}></Route>
               <Route path="/info" Component={InfoComponent}></Route>
               <Route path="/Calendar" Component={CalendarComponent}></Route>
+              <Route path="/class4" Component={Test042}></Route>
+              <Route path="/class5" Component={Tree}></Route>
             </Routes>
           </Content>
         </Layout>
